@@ -47,15 +47,16 @@ jobs:
           fi
 
       - name: Upload build artifacts
-        if: inputs.release-build != 'true'
+        if: ${{ !inputs.release-build }}
         uses: actions/upload-artifact@v7
         with:
           name: build-artifacts
           path: build/tasks/_menv_linkMingwX64Debug/
 
       - name: Upload release artifacts
-        if: inputs.release-build == 'true'
+        if: ${{ inputs.release-build }}
         uses: actions/upload-artifact@v7
         with:
           name: release-artifacts
           path: build/tasks/_menv_linkMingwX64Release/
+          if-no-files-found: error
