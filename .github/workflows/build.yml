@@ -25,6 +25,14 @@ jobs:
           restore-keys: |
             kotlin-toolchain-${{ runner.os }}-
 
+      - name: Cache Konan directory
+        uses: actions/cache@v6
+        with:
+          path: ~/.konan
+          key: konan-directory-${{ runner.os }}-${{ hashFiles('**/module.yaml', 'libs.versions.toml') }}
+          restore-keys: |
+            konan-directory-${{ runner.os }}-
+
       - name: Grant execute permission for kotlin
         run: chmod +x kotlin
 
