@@ -17,21 +17,21 @@ jobs:
       - name: Set Kotlin Toolchain shared cache directory
         run: echo "KOTLIN_SHARED_CACHE_DIR=$HOME/.kotlin-shared-cache" >> $GITHUB_ENV
 
-      - name: Cache Kotlin Toolchain
+      - name: Cache Kotlin Toolchain shared
         uses: actions/cache@v6
         with:
           path: ${{ env.KOTLIN_SHARED_CACHE_DIR }}
-          key: kotlin-toolchain-${{ runner.os }}-${{ hashFiles('**/module.yaml', 'libs.versions.toml') }}
+          key: kotlin-toolchain-shared-${{ runner.os }}-${{ hashFiles('**/module.yaml', 'libs.versions.toml') }}
           restore-keys: |
-            kotlin-toolchain-${{ runner.os }}-
+            kotlin-toolchain-shared-${{ runner.os }}-
 
-      - name: Cache Konan directory
+      - name: Cache Konan
         uses: actions/cache@v6
         with:
           path: ~/.konan
-          key: konan-directory-${{ runner.os }}-${{ hashFiles('**/module.yaml', 'libs.versions.toml') }}
+          key: konan-${{ runner.os }}-${{ hashFiles('**/module.yaml', 'libs.versions.toml') }}
           restore-keys: |
-            konan-directory-${{ runner.os }}-
+            konan-${{ runner.os }}-
 
       - name: Grant execute permission for kotlin
         run: chmod +x kotlin
