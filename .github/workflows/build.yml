@@ -25,6 +25,9 @@ jobs:
           restore-keys: |
             kotlin-toolchain-${{ runner.os }}-
 
+      - name: Grant execute permission for kotlin
+        run: chmod +x kotlin
+
       - name: Build
         run: ./kotlin build
 
