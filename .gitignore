@@ -1,0 +1,23 @@
+### General
+.DS_Store
+build/
+out/
+!**/src/**/build/
+!**/src/**/out/
+*.log
+
+### IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+### Gradle
+.gradle/
+local.properties
+
+### Java
+*.hprof
+
+### Kotlin
+.kotlin/
